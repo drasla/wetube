@@ -3196,7 +3196,6 @@ tags
 *.tmp
 *.rst
 *.os
-*.js
 *.pb
 *.dcp
 *.hwdef
