@@ -1,0 +1,23 @@
+{
+  "name": "wetube",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drasla/wetube.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/drasla/wetube/issues"
+  },
+  "homepage": "https://github.com/drasla/wetube#readme",
+  "description": "Cloning Youtube with Vanilla and NodeJS"
+}
