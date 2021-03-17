@@ -1,3 +1,5 @@
+import routes from "../routes";
+
 export const getJoin = (req, res) => {
     res.render("join", {pageTitle: "Join"});
 }
@@ -15,7 +17,14 @@ export const postJoin = (req, res) => {
     }
 };
 
-export const login = (req, res) => res.render("login");
+export const getLogin = (req, res) => {
+    res.render("login", { pageTitle: "LogIn"});
+}
+
+export const postLogin = (req, res) => {
+    // To Do: Log user in
+    res.redirect(routes.home);
+}
 
 export const logout = (req, res) => res.render("logout");
 
