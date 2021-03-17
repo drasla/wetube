@@ -2,7 +2,7 @@ import multer from "multer";
 import routes from "../routes";
 
 const multerVideo = multer({
-    dest: "videos/"
+    dest: "uploads/videos/"
 })
 
 export const uploadVideoMiddleware = multerVideo.single("videoFile");
