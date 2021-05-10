@@ -8,6 +8,7 @@
     "@babel/node": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "body-parser": "^1.19.0",
+    "connect-mongo": "^4.4.1",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "eslint": "^7.22.0",
