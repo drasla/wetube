@@ -40,7 +40,6 @@ export const getLogin = (req, res) => {
 export const githubLogin = passport.authenticate("github");
 
 export const githubLoginCallback = async (_, __, profile, cb) => {
-    console.log(profile);
     const { _json: { id, avatar_url: avatarUrl, name, email } } = profile;
     try {
         const user = await User.findOne({
@@ -72,15 +71,14 @@ export const postGithubLogin = (req, res) => {
 export const facebookLogin = passport.authenticate("facebook");
 
 export const facebookLoginCallback = async (_, __, profile, cb) => {
-    console.log(profile);
-    const { _json: { id, avatar_url: avatarUrl, name, email } } = profile;
+    const { _json: { id, name, email } } = profile;
     try {
         const user = await User.findOne({
             email: email
         });
 
         if(user) {
-            user.githubId = id;
+            user.facebookId = id;
             user.save();
             return cb(null, user);
         }
@@ -88,8 +86,8 @@ export const facebookLoginCallback = async (_, __, profile, cb) => {
         const newUser = await User.create({
             email,
             name,
-            githubId: id,
-            avatarUrl
+            facebookId: id,
+            avatarUrl: `https://graph.facebook.com/${id}/picture?type=large`
         });
         return cb(null, newUser);
     } catch (e) {
