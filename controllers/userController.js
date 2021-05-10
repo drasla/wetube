@@ -39,8 +39,30 @@ export const getLogin = (req, res) => {
 
 export const githubLogin = passport.authenticate("github");
 
-export const githubLoginCallback = (accessToken, refreshToken, profile, cb) => {
-    console.log(accessToken, refreshToken, profile, cb);
+export const githubLoginCallback = async (_, __, profile, cb) => {
+    console.log(profile);
+    const { _json: { id, avatar_url, name, email } } = profile;
+    try {
+        const user = await User.findOne({
+            email: email
+        });
+
+        if(user) {
+           user.githubId = id;
+           user.save();
+           return cb(null, user);
+        }
+
+        const newUser = await User.create({
+            email,
+            name,
+            githubId: id,
+            avatarUrl: avatar_url
+        });
+        return cb(null, newUser);
+    } catch (e) {
+        return cb(e);
+    }
 }
 
 export const postGithubLogin = (req, res) => {
