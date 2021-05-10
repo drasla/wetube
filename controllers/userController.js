@@ -1,3 +1,4 @@
+import passport from "passport";
 import routes from "../routes";
 import User from "../models/User";
 
@@ -21,12 +22,14 @@ export const postJoin = async (req, res) => {
             });
 
             await User.register(user, password);
+            next();
         } catch (e) {
             console.log(e);
+            res.redirect(routes.home);
         }
 
         // To Do: Log user in
-        res.redirect(routes.home);
+
     }
 };
 
@@ -34,10 +37,10 @@ export const getLogin = (req, res) => {
     res.render("login", { pageTitle: "LogIn"});
 }
 
-export const postLogin = (req, res) => {
-    // To Do: Log user in
-    res.redirect(routes.home);
-}
+export const postLogin = passport.authenticate("local", {
+    failureRedirect: routes.login,
+    successRedirect: routes.home
+});
 
 export const logout = (req, res) => {
     // To Do: Process Log Out

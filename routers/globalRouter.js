@@ -11,6 +11,6 @@ globalRouter.get(routes.login, getLogin);
 globalRouter.post(routes.login, postLogin);
 globalRouter.get(routes.logout, logout);
 globalRouter.get(routes.join, getJoin);
-globalRouter.post(routes.join, postJoin);
+globalRouter.post(routes.join, postJoin, postLogin);
 
 export default globalRouter;
