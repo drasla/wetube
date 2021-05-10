@@ -3,9 +3,8 @@ import routes from "../routes";
 import {home, search} from "../controllers/videoController";
 import {
     getJoin,
-    getLogin,
+    getLogin, getMe,
     githubLogin,
-    githubLoginCallback,
     logout, postGithubLogin,
     postJoin,
     postLogin
@@ -29,5 +28,6 @@ globalRouter.get(
     passport.authenticate("github", { failureRedirect: "/login" }),
     postGithubLogin
 );
+globalRouter.get(routes.me, getMe);
 
 export default globalRouter;
