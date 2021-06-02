@@ -10,6 +10,7 @@ const USERS = "/users";
 const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
+const DELETE_USER = "/delete";
 const ME = "/me";
 
 // Users - github
@@ -44,6 +45,7 @@ const routes = {
     me: ME,
     editProfile: EDIT_PROFILE,
     changePassword: CHANGE_PASSWORD,
+    deleteUser: DELETE_USER,
     videos: VIDEOS,
     upload: UPLOAD,
     videoDetail: (id) => {
