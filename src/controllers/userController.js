@@ -22,7 +22,7 @@ export const postJoin = async (req, res) => {
         ]
     });
     if(exists) {
-        return res.render("join", { pageTitle, errorMessage: "This username/email is already taken." });
+        return res.status(400).render("join", { pageTitle, errorMessage: "This username/email is already taken." });
     }
 
     await User.create({
